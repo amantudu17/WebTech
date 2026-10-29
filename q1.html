@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q1 - Hello PHP</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Question 1</h1>
+    <p>Display Hello PHP</p>
+
+    <button onclick="showHello()">Click Me</button>
+
+    <div id="result"></div>
+
+    <script>
+        function showHello() {
+
+            // Create AJAX request
+            let xhr = new XMLHttpRequest();
+
+            // Send request to PHP
+            xhr.open("GET", "q1.php", true);
+
+            // When PHP sends response
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    document.getElementById("result").innerHTML = xhr.responseText;
+                }
+            };
+
+            xhr.send();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q5 - Student Form</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+            padding: 30px;
+        }
+
+        .form-box {
+            width: 450px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            padding: 8px;
+            width: 95%;
+        }
+
+        .radio {
+            width: auto;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-box">
+
+        <h1>Student Form</h1>
+
+        <form action="q5.php" method="POST" enctype="multipart/form-data">
+
+            <!-- Textbox -->
+            <label>Name:</label>
+            <input type="text" name="name" required>
+
+
+            <!-- Password -->
+            <label>Password:</label>
+            <input type="password" name="password" required>
+
+
+            <!-- Option Button / Radio Button -->
+            <label>Gender:</label>
+
+            <input class="radio"
+                   type="radio"
+                   name="gender"
+                   value="Male"
+                   required> Male
+
+            <input class="radio"
+                   type="radio"
+                   name="gender"
+                   value="Female"> Female
+
+
+            <!-- List Box -->
+            <label>Department:</label>
+
+            <select name="department">
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="EE">EE</option>
+                <option value="ME">ME</option>
+            </select>
+
+
+            <!-- File Upload -->
+            <label>Upload File:</label>
+
+            <input type="file" name="file">
+
+
+            <!-- Hidden Element -->
+            <input type="hidden"
+                   name="student_id"
+                   value="12345">
+
+
+            <button type="submit">
+                Submit
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

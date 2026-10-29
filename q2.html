@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q2 - Student Grade</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .box {
+            width: 400px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 10px;
+            width: 200px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>Student Grade</h1>
+
+        <p>Enter marks:</p>
+
+        <input type="number" id="marks" min="0" max="100">
+
+        <br>
+
+        <button onclick="findGrade()">Find Grade</button>
+
+        <div id="result"></div>
+
+    </div>
+
+
+    <script>
+
+        function findGrade() {
+
+            let marks = document.getElementById("marks").value;
+
+            if (marks == "") {
+                document.getElementById("result").innerHTML =
+                    "Please enter marks";
+                return;
+            }
+
+            let xhr = new XMLHttpRequest();
+
+            xhr.open("GET", "q2.php?marks=" + marks, true);
+
+            xhr.onload = function() {
+
+                if (xhr.status == 200) {
+                    document.getElementById("result").innerHTML =
+                        xhr.responseText;
+                }
+
+            };
+
+            xhr.send();
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q8 - Marks Calculator</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin: 30px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 6px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Student Marks Calculator</h1>
+
+    <form id="marksForm">
+        <p>Enter marks out of 100</p>
+
+        <input type="number" name="marks[]" placeholder="Web Technology" min="0" max="100" required><br>
+
+        <input type="number" name="marks[]" placeholder="Data Structures" min="0" max="100" required><br>
+
+        <input type="number" name="marks[]" placeholder="Algorithms" min="0" max="100" required><br>
+
+        <input type="number" name="marks[]" placeholder="Computer Architecture" min="0" max="100" required><br>
+
+        <input type="number" name="marks[]" placeholder="Database Systems" min="0" max="100" required><br>
+
+        <button type="submit">Calculate Result</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("marksForm").onsubmit = function(event) {
+            event.preventDefault();
+
+            let formData = new FormData(this);
+            let params = new URLSearchParams(formData);
+
+            let xhr = new XMLHttpRequest();
+
+            xhr.open("POST", "q8.php", true);
+            xhr.setRequestHeader(
+                "Content-Type",
+                "application/x-www-form-urlencoded"
+            );
+
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    document.getElementById("result").innerHTML =
+                        xhr.responseText;
+                }
+            };
+
+            xhr.send(params.toString());
+        };
+    </script>
+
+</body>
+</html>

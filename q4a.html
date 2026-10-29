@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q4(i) - Sort Numbers</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .box {
+            width: 500px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 10px;
+            width: 300px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>Sort Numbers</h1>
+
+        <p>Enter numbers separated by spaces:</p>
+
+        <input type="text" id="numbers"
+               placeholder="Example: 40 10 30 20 50">
+
+        <br>
+
+        <button onclick="sortNumbers()">Sort Numbers</button>
+
+        <div id="result"></div>
+
+    </div>
+
+
+    <script>
+
+        function sortNumbers() {
+
+            let numbers = document.getElementById("numbers").value;
+
+            if (numbers == "") {
+                document.getElementById("result").innerHTML =
+                    "Please enter some numbers";
+                return;
+            }
+
+            let xhr = new XMLHttpRequest();
+
+            xhr.open("GET", "q4a.php?numbers=" +
+                encodeURIComponent(numbers), true);
+
+            xhr.onload = function() {
+
+                if (xhr.status == 200) {
+                    document.getElementById("result").innerHTML =
+                        xhr.responseText;
+                }
+
+            };
+
+            xhr.send();
+        }
+
+    </script>
+
+</body>
+</html>

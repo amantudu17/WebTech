@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q4(ii) - Animal Names</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .box {
+            width: 450px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 10px;
+            width: 200px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>Animal Names</h1>
+
+        <p>Enter N:</p>
+
+        <input type="number" id="n" min="1" max="10">
+
+        <br>
+
+        <button onclick="showAnimals()">Show Animals</button>
+
+        <div id="result"></div>
+
+    </div>
+
+
+    <script>
+
+        function showAnimals() {
+
+            let n = document.getElementById("n").value;
+
+            if (n == "" || n < 1 || n > 10) {
+                document.getElementById("result").innerHTML =
+                    "Enter a number between 1 and 10";
+                return;
+            }
+
+            let xhr = new XMLHttpRequest();
+
+            xhr.open("GET", "q4b.php?n=" + n, true);
+
+            xhr.onload = function() {
+
+                if (xhr.status == 200) {
+                    document.getElementById("result").innerHTML =
+                        xhr.responseText;
+                }
+
+            };
+
+            xhr.send();
+        }
+
+    </script>
+
+</body>
+</html>

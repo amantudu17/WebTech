@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q6 - Animal Images</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin: 30px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        img {
+            width: 150px;
+            height: 120px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Display Animal Images</h1>
+
+    <label>Enter N (1 to 5):</label>
+    <input type="number" id="n" min="1" max="5">
+
+    <button onclick="showImages()">Show Images</button>
+
+    <div id="result"></div>
+
+    <script>
+        function showImages() {
+            let n = document.getElementById("n").value;
+
+            if (n == "" || n < 1 || n > 5) {
+                document.getElementById("result").innerHTML =
+                    "Enter a number from 1 to 5";
+                return;
+            }
+
+            let xhr = new XMLHttpRequest();
+
+            xhr.open("GET", "q6.php?n=" + n, true);
+
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    document.getElementById("result").innerHTML =
+                        xhr.responseText;
+                }
+            };
+
+            xhr.send();
+        }
+    </script>
+
+</body>
+</html>
